@@ -6,7 +6,7 @@ import argparse
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Demo")
     parser.add_argument("--model-name", default="blip2_vicuna_instruct")
-    parser.add_argument("--model-type", default="vicuna7b")
+    parser.add_argument("--model-type", default="vicuna13b")
     args = parser.parse_args()
 
     image_input = gr.Image(type="pil")
@@ -116,4 +116,4 @@ if __name__ == '__main__':
         inputs=[image_input, prompt_textbox, min_len, max_len, beam_size, len_penalty, repetition_penalty, top_p, sampling],
         outputs="text",
         allow_flagging="never",
-    ).launch()
+    ).launch(server_name="10.105.0.45", server_port=7860,share=True)
